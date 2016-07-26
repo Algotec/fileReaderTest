@@ -1,0 +1,6 @@
+{
+  "name": "Filereadertest",
+  "tagline": "Tests heavy load on file reader. crashes chrome, works in IE and firefox",
+  "body": "# fileReaderTest\r\nTests heavy load on file reader. crashes chrome, works in IE and firefox\r\n\r\nWorks by loading the same large image to a new filereader every 20 ms. Uses .readAsArrayBuffer function.\r\n\r\ndocumented with chromioum with issue [11458](https://bugs.chromium.org/p/chromium/issues/detail?id=114548)\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
