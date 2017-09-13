@@ -32,34 +32,13 @@
     <button id="start">Start</button>
     <button id="stop">Stop</button>
     <script>
-        var interval;
-        var blob;
 
-        //  load the image once and create a blob out of it
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "largeImage.png", true);
-        xhr.responseType = "arraybuffer";
-        xhr.onload = function (e) {
-            var arrayBufferView = new Uint8Array(e.target.response);
-            blob = new Blob([arrayBufferView], {type: "image/png"});
-        };
-        xhr.send();
-
+	    var myWorker = new Worker('worker.js');
         document.getElementById("start").addEventListener("click", function () {
-
-            interval = setInterval(function () {
-                var fr = new FileReader();
-                fr.onloadend = function (reader) {
-                    if (!(reader.target.result instanceof ArrayBuffer)) {
-                        console.log('Failed!');
-                        console.log(reader.result);
-                    }
-                };
-                fr.readAsArrayBuffer(blob);
-            }, 20); //  50 fps
+            myWorker.postMessage("start");
         });
         document.getElementById("stop").addEventListener("click", function () {
-            clearInterval(interval);
+	        myWorker.postMessage("stop");
         });
     </script>
     <footer class="site-footer">
